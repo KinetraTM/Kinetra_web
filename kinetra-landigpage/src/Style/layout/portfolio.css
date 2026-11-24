@@ -1,0 +1,451 @@
+/* =========================================================
+   Portafolio de posibles webs — índice, vista previa y mockups
+   ========================================================= */
+
+/* ---------- Barra de ruta ---------- */
+
+.portfolio-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-cli);
+  background-color: var(--bg-panel);
+}
+
+.portfolio-nav__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-block: var(--space-3);
+}
+
+.portfolio-nav__brand {
+  color: var(--accent-primary);
+  font-size: 0.8rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.portfolio-nav__brand strong {
+  font-weight: 700;
+}
+
+.portfolio-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio-nav a {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.portfolio-nav a:hover,
+.portfolio-nav a[aria-current='page'] {
+  color: var(--accent-primary);
+}
+
+/* ---------- Páginas ---------- */
+
+.portfolio-page,
+.preview-page {
+  padding-block: var(--space-12);
+}
+
+.portfolio-title::before,
+.preview-title::before,
+.preview-missing .preview-title::before {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--accent-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.portfolio-title::before {
+  content: '$ ls ./webs';
+}
+
+.preview-title::before,
+.preview-missing .preview-title::before {
+  content: '$ open ./sitio';
+}
+
+.portfolio-intro,
+.preview-description {
+  max-width: 72ch;
+  margin-bottom: var(--space-8);
+  color: var(--text-secondary);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border-cli);
+  border-radius: 3px;
+  background-color: var(--bg-panel);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.portfolio-card:hover,
+.portfolio-card:focus-visible {
+  border-color: var(--accent-primary);
+  box-shadow: inset 2px 0 0 var(--accent-primary);
+}
+
+.portfolio-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.portfolio-card__title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.portfolio-card__summary {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.preview-back {
+  display: inline-block;
+  margin-bottom: var(--space-6);
+  color: var(--accent-primary);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.preview-back:hover {
+  color: var(--text-primary);
+}
+
+.preview-kind {
+  margin-bottom: var(--space-8);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.preview-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .preview-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.preview-columns h2 {
+  margin-bottom: var(--space-3);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.preview-columns h2::before {
+  content: '# ';
+  color: var(--accent-primary);
+}
+
+.preview-columns ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preview-columns li {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.preview-columns li::before {
+  content: '> ';
+  color: var(--accent-primary);
+}
+
+.preview-other {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+  padding-top: var(--space-5);
+  border-top: 1px dashed var(--border-cli);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.preview-other a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.preview-other a:hover {
+  color: var(--text-primary);
+}
+
+.preview-missing {
+  max-width: 60ch;
+}
+
+/* ---------- Mockups de las webs propuestas ---------- */
+
+.mock {
+  overflow: hidden;
+  border: 1px solid var(--border-cli);
+  border-radius: 3px;
+  background-color: var(--bg-terminal);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.mock__chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--border-cli);
+  background-color: var(--bg-header);
+  color: var(--text-muted);
+  font-size: 0.6rem;
+  line-height: 1;
+}
+
+.mock__dots {
+  letter-spacing: 0.35em;
+}
+
+.mock__file {
+  max-width: 65%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mock__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.mock__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 0.7rem;
+}
+
+.mock__brand {
+  color: var(--accent-primary);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.mock__nav {
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.mock__headline {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.1rem, 3vw, 1.85rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  overflow-wrap: break-word;
+}
+
+.mock__headline--sm {
+  font-size: 1.15rem;
+}
+
+.mock__subline {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.mock__cta {
+  align-self: flex-start;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.mock__tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.mock__tiles span {
+  padding: 0.5rem;
+  border: 1px solid var(--border-cli);
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  overflow-wrap: anywhere;
+}
+
+.mock__editorial {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-5);
+}
+
+.mock__index {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mock__index li {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dashed var(--border-cli);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+}
+
+.mock__editorial-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mock__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.mock__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: var(--space-3);
+  border: 1px solid var(--border-cli);
+}
+
+.mock__stat-label {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+.mock__stat strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.mock__bar {
+  display: block;
+  height: 4px;
+  max-width: 100%;
+  background-color: var(--accent-primary);
+  opacity: 0.65;
+}
+
+/* Versión reducida para las tarjetas del índice */
+.mock--mini .mock__body {
+  min-height: 9rem;
+  padding: var(--space-3);
+  gap: var(--space-2);
+}
+
+.mock--mini .mock__headline {
+  font-size: 1rem;
+}
+
+.mock--mini .mock__subline,
+.mock--mini .mock__nav,
+.mock--mini .mock__tiles,
+.mock--mini .mock__index {
+  display: none;
+}
+
+.mock--mini .mock__editorial {
+  grid-template-columns: 1fr;
+}
+
+.mock--mini .mock__stat {
+  padding: 0.45rem;
+}
+
+.mock--mini .mock__stat-label {
+  display: none;
+}
+
+.mock--mini .mock__stat strong {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .portfolio-page,
+  .preview-page {
+    padding-block: var(--space-8);
+  }
+
+  .mock__body {
+    padding: var(--space-3);
+  }
+
+  .mock__editorial,
+  .mock__tiles,
+  .mock__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-other {
+    gap: var(--space-2);
+  }
+}

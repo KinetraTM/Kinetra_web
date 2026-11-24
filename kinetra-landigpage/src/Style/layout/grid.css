@@ -107,7 +107,7 @@
 
 /* Utilities used by sections */
 .muted {
-  color: var(--color-text-muted);
+  color: var(--text-secondary);
 }
 
 .flex {
