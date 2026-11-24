@@ -11,15 +11,14 @@ const projectDir = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const repoRoot = resolve(projectDir, '..')
 const distDir = join(projectDir, 'dist')
 
-const run = (command, args, cwd, useShell = false) => {
+const run = (command, args, cwd) => {
   console.log(`\n> ${command} ${args.join(' ')}`)
-  const result = spawnSync(command, args, { cwd, stdio: 'inherit', shell: useShell })
+  const result = spawnSync(command, args, { cwd, stdio: 'inherit', shell: true })
   if (result.status !== 0) process.exit(result.status ?? 1)
 }
 
 // 1. Compilar con la base /Kinetra_web/ ya configurada en vite.config.js.
-// En Windows pnpm es un .cmd, así que necesita shell.
-run('pnpm', ['run', 'build'], projectDir, process.platform === 'win32')
+run('pnpm', ['run', 'build'], projectDir)
 
 // 2. Limpiar la salida anterior en la raíz para no acumular hashes viejos.
 const generated = [
