@@ -1,0 +1,11 @@
+/* =========================================================
+   Entry principal de estilos — Style/index.css
+   Importa utils y layout en orden (tokens → reset →
+   animaciones → tipografía → grid).
+   ========================================================= */
+
+@import './utils/tokens.css';
+@import './utils/reset.css';
+@import './utils/animations.css';
+@import './layout/typography.css';
+@import './layout/grid.css';
