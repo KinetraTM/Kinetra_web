@@ -3,6 +3,7 @@ import Container from '../components/ui/Container'
 import Heading from '../components/ui/Heading'
 import SiteMockup from '../components/ui/SiteMockup'
 import { websites } from '../data/portfolio'
+import { withBase } from '../utils/basePath'
 import '../Style/layout/portfolio.css'
 
 /* Índice de posibles webs: cada tarjeta abre una vista previa navegable. */
@@ -23,7 +24,7 @@ export default function PortfolioPage() {
 
           <div className="portfolio-grid" aria-label="Propuestas de webs">
             {websites.map((site) => (
-              <a key={site.slug} className="portfolio-card" href={`/webs/${site.slug}`}>
+              <a key={site.slug} className="portfolio-card" href={withBase(`/webs/${site.slug}`)}>
                 <span className="portfolio-card__meta">
                   <span>{site.kind}</span>
                   <span>→ ./abrir</span>

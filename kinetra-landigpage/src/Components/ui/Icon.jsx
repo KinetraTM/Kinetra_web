@@ -1,3 +1,4 @@
+import { withBase } from '../../utils/basePath'
 import '../../Style/layout/components.css'
 
 /* Icon wrapper — usado con svg inline desde Asset/icons/ */
@@ -18,7 +19,7 @@ const Icon = ({
     aria-hidden="true"
     {...props}
   >
-    <use href={`/icons.svg#${name}`} />
+    <use href={`${withBase('/icons.svg')}#${name}`} />
   </svg>
 )
 

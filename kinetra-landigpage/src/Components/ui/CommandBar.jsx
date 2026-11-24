@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { withBase } from '../../utils/basePath'
 import '../../Style/layout/command-bar.css'
 
 /* Consola interactiva ligera: navega entre secciones sin reemplazar el menú traditional. */
@@ -41,7 +42,7 @@ export default function CommandBar() {
 
     if (command === 'webs') {
       output.push({ text: 'Abriendo ./webs', kind: 'info' })
-      window.location.assign('/webs')
+      window.location.assign(withBase('/webs'))
     } else if (command === 'help') {
       output.push({ text: 'Comandos: help | webs | proyectos | contacto | servicios | clear', kind: 'info' })
     } else if (TARGETS[command]) {

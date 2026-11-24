@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { withoutBase } from './utils/basePath'
 import TVChassis from './components/tv/TVChassis'
 import TermsPage from './Page/TermsPage'
 import PrivacyPage from './Page/PrivacyPage'
@@ -9,10 +10,10 @@ import WebPreviewPage from './Page/WebPreviewPage'
    Rutas: /, /webs, /webs/:slug, /terminos y /privacidad. */
 
 export default function App() {
-  const [route, setRoute] = useState(() => window.location.pathname)
+  const [route, setRoute] = useState(() => withoutBase(window.location.pathname))
 
   useEffect(() => {
-    const onPop = () => setRoute(window.location.pathname)
+    const onPop = () => setRoute(withoutBase(window.location.pathname))
     window.addEventListener('popstate', onPop)
     return () => window.removeEventListener('popstate', onPop)
   }, [])

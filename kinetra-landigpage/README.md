@@ -14,3 +14,13 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the Oxlint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+## Deploy en GitHub Pages
+
+El deploy se hace con GitHub Actions (`.github/workflows/deploy.yml`), no desde la rama `main`:
+
+1. En **Settings > Pages > Build and deployment**, seleccionar **Source: GitHub Actions**.
+2. En **Settings > Actions > General > Workflow permissions**, marcar **Read and write permissions**.
+3. Hacer push a `main` y revisar que el workflow **Deploy to GitHub Pages** termine en verde.
+
+La app se sirve en `https://kinetratm.github.io/Kinetra_web/`. Por eso `vite.config.js` define `base: '/Kinetra_web/'`; si se configura un dominio personalizado en la raíz, cambiarlo a `base: '/'`. Las rutas internas usan `import.meta.env.BASE_URL` a través de `src/utils/basePath.js`, y `dist/404.html` permite que las rutas profundas (`/webs/slug`, `/terminos`, etc.) funcionen sin rewrites del servidor.

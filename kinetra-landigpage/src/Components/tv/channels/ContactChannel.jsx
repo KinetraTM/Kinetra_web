@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { withBase } from '../../../utils/basePath'
 
 /* CH 04 — CONTACTO (formulario local, sin endpoint externo) */
 
@@ -70,9 +71,9 @@ export default function ContactChannel() {
       )}
 
       <nav className="tv-footer-links" aria-label="Enlaces adicionales">
-        <a href="/webs">/webs</a>
-        <a href="/terminos">/terminos</a>
-        <a href="/privacidad">/privacidad</a>
+        <a href={withBase('/webs')}>/webs</a>
+        <a href={withBase('/terminos')}>/terminos</a>
+        <a href={withBase('/privacidad')}>/privacidad</a>
       </nav>
     </section>
   )

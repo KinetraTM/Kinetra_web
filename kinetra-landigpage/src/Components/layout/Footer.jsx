@@ -1,3 +1,4 @@
+import { withBase } from "../../utils/basePath";
 import Button from "../ui/Button";
 import Icon from "../ui/Icon";
 import Heading from "../ui/Heading";
@@ -46,7 +47,7 @@ const Footer = ({ onContactClick = () => {} }) => (
           <ul className="footer-col-list">
             {[
               { label: "Inicio", href: "#hero" },
-              { label: "Posibles webs", href: "/webs" },
+              { label: "Posibles webs", href: withBase("/webs") },
               { label: "Servicios", href: "#servicios" },
               { label: "Proceso", href: "#proceso" },
               { label: "Proyectos", href: "#proyectos" },
@@ -63,12 +64,12 @@ const Footer = ({ onContactClick = () => {} }) => (
           <h4 className="footer-col-title">Legal</h4>
           <ul className="footer-col-list">
             <li>
-              <a href="/terminos" className="footer-legal">
+              <a href={withBase("/terminos")} className="footer-legal">
                 Términos y condiciones
               </a>
             </li>
             <li>
-              <a href="/privacidad" className="footer-legal">
+              <a href={withBase("/privacidad")} className="footer-legal">
                 Política de privacidad
               </a>
             </li>
