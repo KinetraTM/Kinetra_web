@@ -9,7 +9,7 @@ import ProjectsSection from '../Components/sections/ProjectsSection'
 import TestimonialsSection from '../Components/sections/TestimonialsSection'
 import FAQSection from '../Components/sections/FAQSection'
 import ContactSection from '../Components/sections/ContactSection'
-import CommandBar from '../components/ui/CommandBar'
+import CommandBar from '../Components/ui/CommandBar'
 import '../Style/index.css'
 
 const SECTION_IDS = [

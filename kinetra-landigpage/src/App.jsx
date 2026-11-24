@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { withoutBase } from './utils/basePath'
-import TVChassis from './components/tv/TVChassis'
+import TVChassis from './Components/tv/TVChassis'
 import TermsPage from './Page/TermsPage'
 import PrivacyPage from './Page/PrivacyPage'
 import PortfolioPage from './Page/PortfolioPage'
