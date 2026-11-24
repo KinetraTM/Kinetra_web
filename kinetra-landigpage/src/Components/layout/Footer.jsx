@@ -46,6 +46,7 @@ const Footer = ({ onContactClick = () => {} }) => (
           <ul className="footer-col-list">
             {[
               { label: "Inicio", href: "#hero" },
+              { label: "Posibles webs", href: "/webs" },
               { label: "Servicios", href: "#servicios" },
               { label: "Proceso", href: "#proceso" },
               { label: "Proyectos", href: "#proyectos" },

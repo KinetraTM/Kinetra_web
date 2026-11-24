@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import HomePage from './Page/index'
+import TVChassis from './components/tv/TVChassis'
 import TermsPage from './Page/TermsPage'
 import PrivacyPage from './Page/PrivacyPage'
+import PortfolioPage from './Page/PortfolioPage'
+import WebPreviewPage from './Page/WebPreviewPage'
 
 /* Router simple basado en pathname (Sin librerías externas).
-   Navegación completa para /terminos y /privacidad. */
+   Rutas: /, /webs, /webs/:slug, /terminos y /privacidad. */
 
 export default function App() {
   const [route, setRoute] = useState(() => window.location.pathname)
@@ -15,7 +17,11 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPop)
   }, [])
 
-  if (route.startsWith('/terminos')) return <TermsPage />
-  if (route.startsWith('/privacidad')) return <PrivacyPage />
-  return <HomePage />
+  const path = route.replace(/\/+$/, '') || '/'
+
+  if (path.startsWith('/terminos')) return <TermsPage />
+  if (path.startsWith('/privacidad')) return <PrivacyPage />
+  if (path === '/webs') return <PortfolioPage />
+  if (path.startsWith('/webs/')) return <WebPreviewPage slug={path.slice('/webs/'.length)} />
+  return <TVChassis />
 }

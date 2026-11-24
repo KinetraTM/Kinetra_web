@@ -1,2 +1,58 @@
 /* Entry principal: compila Style/index.css (tokens → reset → animaciones → tipografía → grid) */
-@import './Style/index.css';
+@import "./Style/index.css";
+
+/* =========================================================
+   Paleta CRT a TODO COLOR — Kinetra Television
+   Ningún modo monocromo: todos los acentos son fosforescentes.
+   ========================================================= */
+
+:root {
+  /* ---- Carcasa y hardware ---- */
+  --tv-casing: #232730;
+  --tv-casing-accent: #B45309;
+  --tv-bezel: #14171D;
+  --knob-metal: #374151;
+
+  /* ---- Pantalla CRT ---- */
+  --crt-bg: #0B1021;
+  --crt-surface: #131B36;
+  --crt-text: #F8FAFC;
+  --crt-text-muted: #94A3B8;
+  --phosphor-cyan: #00F0FF;
+  --phosphor-coral: #FF2A6D;
+  --phosphor-amber: #FFB800;
+  --phosphor-green: #05FFA1;
+
+  /* ---- Alias para estilos base existentes ---- */
+  --bg-terminal: var(--crt-bg);
+  --bg-panel: var(--crt-surface);
+  --bg-header: var(--tv-bezel);
+  --border-cli: color-mix(in srgb, var(--phosphor-cyan) 22%, var(--tv-bezel));
+  --text-primary: var(--crt-text);
+  --text-secondary: var(--crt-text-muted);
+  --text-muted: var(--crt-text-muted);
+  --accent-primary: var(--phosphor-cyan);
+  --accent-secondary: var(--phosphor-coral);
+  --accent-warning: var(--phosphor-amber);
+  --bg-primary: var(--crt-bg);
+  --bg-secondary: var(--crt-surface);
+  --border-color: var(--border-cli);
+  --on-accent-primary: var(--crt-bg);
+  --on-accent-secondary: var(--crt-bg);
+  --accent-primary-text: var(--accent-primary);
+  --accent-secondary-text: var(--accent-secondary);
+
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: var(--tv-casing);
+  color: var(--crt-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background-color: var(--phosphor-cyan);
+  color: var(--crt-bg);
+}

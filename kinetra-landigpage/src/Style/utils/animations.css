@@ -57,10 +57,10 @@
 @keyframes glowPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(199, 181, 0, 0.35); /* --color-primary */
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-primary) 35%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(199, 181, 0, 0);
+    box-shadow: 0 0 0 8px transparent;
   }
 }
 
@@ -96,7 +96,7 @@
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-cyan) 100%);
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   width: 0%;
   z-index: 1000;
   transition: width var(--duration-fast) linear;

@@ -8,6 +8,7 @@ import '../../Style/layout/components.css'
 
 const NavLinks = () => [
   { label: 'Servicios', href: '#servicios' },
+  { label: 'Webs', href: '/webs' },
   { label: 'Proceso', href: '#proceso' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Testimonios', href: '#testimonios' },

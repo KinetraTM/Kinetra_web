@@ -1,0 +1,498 @@
+/* =========================================================
+   Canales de la televisión Kinetra — contenido dentro del tubo
+   ========================================================= */
+
+.tv-channel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.7rem, 1.6vw, 1.15rem);
+  max-width: 78ch;
+}
+
+.tv-eyebrow {
+  margin: 0;
+  color: var(--phosphor-amber);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tv-headline {
+  margin: 0;
+  color: var(--crt-text);
+  font-family: 'Chakra Petch', monospace;
+  font-size: clamp(1.6rem, 3.8vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  text-shadow:
+    1px 0 rgba(0, 240, 255, 0.4),
+    -1px 0 rgba(255, 42, 109, 0.3);
+}
+
+.tv-headline span {
+  color: var(--phosphor-cyan);
+}
+
+.tv-headline--sm {
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+}
+
+.tv-lead {
+  margin: 0;
+  color: var(--crt-text-muted);
+  font-size: clamp(0.85rem, 1.5vw, 0.98rem);
+  line-height: 1.65;
+}
+
+/* ---------- Botones de la señal ---------- */
+
+.tv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--phosphor-cyan);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--phosphor-cyan);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.tv-btn::before {
+  content: '▸ ';
+}
+
+.tv-btn:hover,
+.tv-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
+}
+
+.tv-btn--primary {
+  border-color: var(--phosphor-coral);
+  background: var(--phosphor-coral);
+  color: var(--crt-bg);
+  box-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+}
+
+.tv-btn--primary:hover,
+.tv-btn--primary:focus-visible {
+  background: var(--phosphor-amber);
+  border-color: var(--phosphor-amber);
+  box-shadow: 0 0 22px rgba(255, 184, 0, 0.4);
+}
+
+.tv-btn--ghost:hover,
+.tv-btn--ghost:focus-visible {
+  background: var(--phosphor-cyan);
+  color: var(--crt-bg);
+}
+
+/* ---------- CH 01: prueba y señal ---------- */
+
+.tv-proof {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--crt-text-muted);
+  font-size: 0.78rem;
+}
+
+.tv-proof strong {
+  color: var(--phosphor-green);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.95rem;
+}
+
+.tv-proof__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--phosphor-green);
+  box-shadow: 0 0 10px var(--phosphor-green);
+}
+
+.tv-signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 52px;
+  margin-top: auto;
+}
+
+.tv-signal span {
+  flex: 1;
+  max-width: 22px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to top, var(--phosphor-cyan), var(--phosphor-coral));
+  opacity: 0.75;
+  animation: tv-signal-pulse 1.6s ease-in-out infinite alternate;
+}
+
+.tv-signal span:nth-child(2n) {
+  animation-delay: 0.3s;
+}
+
+.tv-signal span:nth-child(3n) {
+  animation-delay: 0.6s;
+}
+
+@keyframes tv-signal-pulse {
+  from {
+    transform: scaleY(0.7);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ---------- CH 02: servicios ---------- */
+
+.tv-services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tv-service {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.35rem 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--phosphor-cyan) 28%, transparent);
+  border-left: 3px solid var(--phosphor-cyan);
+  border-radius: 4px;
+  background: var(--crt-surface);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.tv-service:hover {
+  border-color: var(--phosphor-coral);
+  box-shadow: 0 0 16px rgba(255, 42, 109, 0.18);
+}
+
+.tv-service__index {
+  grid-row: span 2;
+  color: var(--phosphor-amber);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tv-service h3 {
+  margin: 0;
+  color: var(--crt-text);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 1.02rem;
+}
+
+.tv-service p {
+  margin: 0;
+  color: var(--crt-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.tv-service__tag {
+  grid-column: 2;
+  justify-self: start;
+  color: var(--phosphor-green);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.7rem;
+}
+
+/* ---------- CH 03: proyectos en vivo ---------- */
+
+.tv-projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+.tv-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tv-project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--phosphor-cyan) 22%, transparent);
+  border-radius: 3px;
+  background: var(--crt-surface);
+  color: var(--crt-text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.tv-project-item:hover,
+.tv-project-item.is-active {
+  border-color: var(--phosphor-cyan);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.22);
+}
+
+.tv-project-item::before {
+  content: '▸ ';
+  color: var(--phosphor-cyan);
+}
+
+.tv-project-item__code {
+  color: var(--phosphor-amber);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+}
+
+.tv-project-item__title {
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.tv-project-item__category {
+  color: var(--crt-text-muted);
+  font-size: 0.68rem;
+}
+
+.tv-live-panel {
+  border: 1px solid var(--phosphor-coral);
+  border-radius: 4px;
+  background: var(--crt-surface);
+  overflow: hidden;
+}
+
+.tv-live-panel__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--phosphor-coral) 45%, transparent);
+  color: var(--crt-text-muted);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+.tv-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--phosphor-coral);
+  font-weight: 700;
+}
+
+.tv-live__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--phosphor-coral);
+  box-shadow: 0 0 8px var(--phosphor-coral);
+  animation: tv-live-blink 1.2s step-end infinite;
+}
+
+@keyframes tv-live-blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.tv-live-panel__screen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.9rem;
+}
+
+.tv-live-panel__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 34px;
+}
+
+.tv-live-panel__bars span {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to top, var(--phosphor-coral), var(--phosphor-amber));
+  opacity: 0.8;
+}
+
+.tv-live-panel__screen h3 {
+  margin: 0;
+  color: var(--crt-text);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 1rem;
+}
+
+.tv-live-panel__screen p {
+  margin: 0;
+  color: var(--crt-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.tv-live-panel__metric {
+  color: var(--phosphor-green);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.9rem;
+}
+
+/* ---------- CH 04: contacto ---------- */
+
+.tv-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.tv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.tv-field > span {
+  color: var(--phosphor-cyan);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.tv-field input,
+.tv-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--phosphor-cyan) 35%, transparent);
+  border-radius: 3px;
+  background: rgba(5, 8, 18, 0.6);
+  color: var(--crt-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.tv-field input::placeholder,
+.tv-field textarea::placeholder {
+  color: var(--crt-text-muted);
+  opacity: 0.75;
+}
+
+.tv-field input:focus,
+.tv-field textarea:focus {
+  border-color: var(--phosphor-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.18);
+}
+
+.tv-field--wide {
+  grid-column: 1 / -1;
+}
+
+.tv-form__submit {
+  justify-self: start;
+}
+
+.tv-sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1rem;
+  border: 1px solid var(--phosphor-green);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--phosphor-green) 8%, var(--crt-surface));
+}
+
+.tv-sent__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--phosphor-green);
+  color: var(--crt-bg);
+  font-weight: 700;
+}
+
+.tv-sent h3 {
+  margin: 0;
+  color: var(--crt-text);
+  font-family: 'Chakra Petch', monospace;
+}
+
+.tv-sent p {
+  margin: 0;
+  color: var(--crt-text-muted);
+  font-size: 0.82rem;
+}
+
+.tv-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px dashed color-mix(in srgb, var(--phosphor-cyan) 30%, transparent);
+}
+
+.tv-footer-links a {
+  color: var(--phosphor-cyan);
+  font-family: 'Chakra Petch', monospace;
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.tv-footer-links a:hover {
+  color: var(--phosphor-amber);
+}
+
+@media (min-width: 640px) {
+  .tv-services,
+  .tv-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tv-service__tag {
+    grid-column: 2;
+  }
+
+  .tv-projects {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tv-signal span,
+  .tv-live__dot {
+    animation: none;
+  }
+
+  .tv-btn:hover,
+  .tv-btn:focus-visible {
+    transform: none;
+  }
+}
