@@ -1,0 +1,94 @@
+/* =========================================================
+   Tokens de diseño — Kinetra
+   Paleta: Yellow (CTA) · Blue · Green · Turquoise/Cyan
+   Profesional, moderna y con sensación tecnológica.
+   CSS nativo — sin librerías externas.
+   ========================================================= */
+
+:root {
+  /* ---- Colores (RoL: accente, neutros, feedback) ---- */
+  --color-primary: #c7b500;          /* Yellow (CTA principal) */
+  --color-primary-dark: #a67c00;
+  --color-primary-light: #ead66a;
+
+  --color-blue: #0f3e58;             /* Azul profesional */
+  --color-blue-light: #3b82f6;
+  --color-blue-dark: #1e3a8a;
+
+  --color-green: #065f46;            /* Verde innovación/crecimiento */
+  --color-green-light: #34d399;
+  --color-green-dark: #10b981;
+
+  --color-cyan: #0891b2;             /* Turquesa / Cian (highlight moderno) */
+  --color-cyan-light: #22d3ee;
+  --color-cyan-dark: #5eead4;
+
+  --color-bg: #ffffff;
+  --color-surface: #f8faff;
+  --color-text: #1e2937;
+  --color-text-muted: #64748b;
+  --color-border: #e5e7eb;
+  --color-danger: #dc2626;
+  --color-danger-light: #fecaca;
+  --color-text-on-primary: #0b0f16; /* texto sobre CTA yellow (contraste en luz y oscuridad) */
+
+  /* ---- Sombra (suave mobile, más profunda desktop) ---- */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1),
+    0 4px 6px -2px rgba(15, 23, 42, 0.05);
+
+  /* ---- Tipografía ---- */
+  --font-display: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* ---- Espaciado (múltiplos de 4) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-28: 112px;
+
+  /* ---- Grid / breakpoints ---- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 1024px;
+
+  /* ---- Efectos de movimiento (consumidos por animations.css) ---- */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tema oscuro opcional (consumido por Context/ThemeContext.tsx) */
+[data-theme='dark'] {
+  --color-bg: #08090f;
+  --color-surface: #10131c;
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-border: #1f2433;
+  --color-primary-light: #f6e07a;
+  --color-text-on-primary: #0b0f16;
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+    0 4px 6px -2px rgba(0, 0, 0, 0.25);
+}
+
+/* Respetar preferencia del sistema por defecto */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Defaults claros a menos que el usuario configure otra cosa; la deja vacía
+       para que el toggle del TemaContext lo controle. */
+  }
+}

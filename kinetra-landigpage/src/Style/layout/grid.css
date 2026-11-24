@@ -1,0 +1,135 @@
+/* Grid y layout responsive — Móvil primero (Mobile First). */
+
+.container {
+  width: min(100% - var(--space-4) * 2, var(--container-max, 1200px));
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+}
+
+/* Services: 1 col móvil → tablet 2 → desktop 4 */
+.grid-services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .grid-services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-services {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Projects: 1 col móvil → tablet 2 → desktop 3 */
+.grid-projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .grid-projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Testimonials carrusel (también grid en móvil) */
+.grid-testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .grid-testimonials {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pares de benéficos (Wefunc) */
+.grid-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .grid-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Layouts de secciones */
+.layout-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+}
+
+@media (min-width: 1024px) {
+  .layout-split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+/* Footer: móvil columna, desktop 4 columnas */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+  }
+}
+
+/* Ajustes de texto en móvil (contra-desbordamientos) */
+.line-break {
+  white-space: pre-line;
+}
+
+/* Utilities used by sections */
+.muted {
+  color: var(--color-text-muted);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.gap-sm {
+  gap: var(--space-3);
+}
+
+.gap {
+  gap: var(--space-6);
+}
+
+.gap-lg {
+  gap: var(--space-10);
+}
