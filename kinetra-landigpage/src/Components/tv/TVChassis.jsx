@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import useSynthAudio from '../../hooks/useSynthAudio'
-import { CHANNELS, COLOR_MODES } from '../../data/channels'
+import { CHANNELS } from '../../data/channels'
 import CRTScreen from './CRTScreen'
 import ControlPanel from './ControlPanel'
 import HomeChannel from './channels/HomeChannel'
@@ -19,10 +19,10 @@ export default function TVChassis() {
   const [phase, setPhase] = useState('on')
   const [channel, setChannel] = useState(0)
   const [volume, setVolume] = useState(0)
-  const [colorMode, setColorMode] = useState(0)
+  const [colorMode] = useState(0)
   const [osd, setOsd] = useState(null)
   const [burst, setBurst] = useState(false)
-  const [degauss, setDegauss] = useState(false)
+  const [degauss] = useState(false)
 
   const timers = useRef([])
   const messageId = useRef(0)
@@ -98,22 +98,6 @@ export default function TVChassis() {
     }, 520)
   }, [audio, channel, later, power, showOsd])
 
-  const cycleColorMode = useCallback(() => {
-    if (!power) return
-    const next = (colorMode + 1) % COLOR_MODES.length
-    setColorMode(next)
-    audio.playClick()
-    showOsd(`COLOR · ${COLOR_MODES[next].name}`, 'amber')
-  }, [audio, colorMode, power, showOsd])
-
-  const runDegauss = useCallback(() => {
-    if (!power || degauss) return
-    setDegauss(true)
-    audio.playDegauss()
-    showOsd('DEGAUSS · ESTABILIZANDO SEÑAL', 'coral')
-    later(() => setDegauss(false), 500)
-  }, [audio, degauss, later, power, showOsd])
-
   useEffect(() => {
     const onKeyDown = (event) => {
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return
@@ -151,13 +135,10 @@ export default function TVChassis() {
         <ControlPanel
           channel={channel}
           volume={volume}
-          colorMode={colorMode}
           power={power}
           onChannelChange={changeChannel}
           onVolumeChange={adjustVolume}
           onPower={togglePower}
-          onColorMode={cycleColorMode}
-          onDegauss={runDegauss}
           onInteract={audio.playClick}
         />
       </div>

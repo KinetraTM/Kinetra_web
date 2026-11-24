@@ -1,28 +1,45 @@
-import RotaryKnob from './RotaryKnob'
-import { CHANNELS, COLOR_MODES } from '../../data/channels'
+import RotaryKnob from "./RotaryKnob";
+import { CHANNELS } from "../../data/channels";
+import { NavLinks } from "../layout/Navbar";
 
 /* Panel físico: perillas, botones, LED y altavoz. */
 
-const channelRotation = (value) => -135 + value * 90
-const volumeRotation = (value) => -135 + (value / 100) * 270
+const channelRotation = (value) => -135 + value * 90;
+const volumeRotation = (value) => -135 + (value / 100) * 270;
 
+/* Derivamos las secciones del panel de TV de las rutas del Navbar. */
+const NAV_SECTIONS = NavLinks().map((link) => ({
+  key: link.href.startsWith("#") ? link.href.slice(1) : link.href,
+  label: link.label,
+  href: link.href,
+}));
+
+const navigateToSection = (href) => {
+  const id = href.startsWith("#") ? href.slice(1) : null;
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else if (href.startsWith("/")) {
+    window.location.assign(href);
+  }
+};
 export default function ControlPanel({
   channel,
   volume,
-  colorMode,
   power,
   onChannelChange,
   onVolumeChange,
   onPower,
-  onColorMode,
-  onDegauss,
   onInteract,
 }) {
   return (
-    <aside className="tv-controls" aria-label="Panel de controles del televisor">
+    <aside
+      className="tv-controls"
+      aria-label="Panel de controles del televisor"
+    >
       <div className="tv-controls__brand">
         KINETRA
-        <span>TRINITRON 2000 · COLOR</span>
+        <span>TRINITRON 2000</span>
       </div>
 
       <div className="tv-controls__knobs">
@@ -55,20 +72,30 @@ export default function ControlPanel({
       <div className="tv-controls__buttons">
         <button
           type="button"
-          className={`tv-physical-btn tv-physical-btn--power ${power ? 'is-on' : ''}`}
+          className={`tv-physical-btn tv-physical-btn--power ${power ? "is-on" : ""}`}
           onClick={onPower}
           aria-pressed={power}
         >
-          <span className={`tv-led ${power ? 'tv-led--on' : ''}`} aria-hidden="true" />
+          <span
+            className={`tv-led ${power ? "tv-led--on" : ""}`}
+            aria-hidden="true"
+          />
           POWER
         </button>
-        <button type="button" className="tv-physical-btn" onClick={onColorMode}>
-          COLOR MODE
-          <small>{COLOR_MODES[colorMode].short}</small>
-        </button>
-        <button type="button" className="tv-physical-btn" onClick={onDegauss}>
-          DEGAUSS
-        </button>
+      </div>
+
+      <div className="tv-controls__nav" aria-label="Navegación por secciones">
+        {NAV_SECTIONS.map((section) => (
+          <button
+            key={section.key}
+            type="button"
+            className="tv-nav-btn tv-physical-btn"
+            onClick={() => navigateToSection(section.href)}
+            aria-label={`Navegar a ${section.label}`}
+          >
+            {section.label}
+          </button>
+        ))}
       </div>
 
       <div className="tv-controls__stepper">
@@ -97,5 +124,5 @@ export default function ControlPanel({
       </div>
       <p className="tv-controls__hint">↑ ↓ o teclas 1-4</p>
     </aside>
-  )
+  );
 }

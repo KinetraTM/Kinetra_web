@@ -6,7 +6,7 @@ import '../../Style/layout/components.css'
 /* Navbar — logo + menú principal + CTA.
    Móvil: menú hamburger con estado local. */
 
-const NavLinks = () => [
+export const NavLinks = () => [
   { label: 'Servicios', href: '#servicios' },
   { label: 'Webs', href: '/webs' },
   { label: 'Proceso', href: '#proceso' },
