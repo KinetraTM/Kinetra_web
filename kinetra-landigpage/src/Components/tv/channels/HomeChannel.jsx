@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
+
 /* CH 01 — INICIO */
 
-export default function HomeChannel({ onGoChannel }) {
+export default function HomeChannel() {
   return (
     <section className="tv-channel tv-channel--home">
       <p className="tv-eyebrow">[ KINETRA · EMISIÓN PRINCIPAL ]</p>
@@ -13,12 +15,12 @@ export default function HomeChannel({ onGoChannel }) {
       </p>
 
       <div className="tv-actions">
-        <button type="button" className="tv-btn tv-btn--primary" onClick={() => onGoChannel(3)}>
+        <Link to="/contacto" className="tv-btn tv-btn--primary">
           Sintonizar Proyecto
-        </button>
-        <button type="button" className="tv-btn tv-btn--ghost" onClick={() => onGoChannel(1)}>
+        </Link>
+        <Link to="/servicios" className="tv-btn tv-btn--ghost">
           Ver servicios
-        </button>
+        </Link>
       </div>
 
       <div className="tv-proof">

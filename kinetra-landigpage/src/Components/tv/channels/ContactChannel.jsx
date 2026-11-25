@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-/* CH 04 — CONTACTO (formulario local, sin endpoint externo) */
+/* CH 08 — CONTACTO (formulario local, sin endpoint externo) */
 
 export default function ContactChannel() {
   const [fields, setFields] = useState({ name: '', email: '', message: '' })
@@ -16,7 +17,7 @@ export default function ContactChannel() {
 
   return (
     <section className="tv-channel tv-channel--contact">
-      <p className="tv-eyebrow">[ CH 04 · CONTACTO ]</p>
+      <p className="tv-eyebrow">[ CH 08 · SINTONIZAR PROYECTO ]</p>
       <h2 className="tv-headline tv-headline--sm">Cuéntanos qué necesitas</h2>
       <p className="tv-lead">Respondemos en 24-48h. Sin compromiso y sin spam.</p>
 
@@ -70,9 +71,9 @@ export default function ContactChannel() {
       )}
 
       <nav className="tv-footer-links" aria-label="Enlaces adicionales">
-        <a href="/webs">/webs</a>
-        <a href="/terminos">/terminos</a>
-        <a href="/privacidad">/privacidad</a>
+        <Link to="/webs">/webs</Link>
+        <Link to="/terminos">/terminos</Link>
+        <Link to="/privacidad">/privacidad</Link>
       </nav>
     </section>
   )

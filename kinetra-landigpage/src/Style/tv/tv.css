@@ -4,7 +4,7 @@
    ========================================================= */
 
 body {
-  font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
   background-color: var(--tv-casing);
   color: var(--crt-text);
 }
@@ -34,10 +34,15 @@ body {
   grid-template-columns: minmax(0, 1fr) clamp(200px, 19vw, 268px);
   gap: clamp(0.75rem, 1.8vw, 1.5rem);
   padding: clamp(0.75rem, 1.8vw, 1.5rem);
-  border: 1px solid color-mix(in srgb, var(--tv-casing-accent) 45%, var(--tv-casing));
+  border: 1px solid
+    color-mix(in srgb, var(--tv-casing-accent) 45%, var(--tv-casing));
   border-radius: 20px;
-  background:
-    linear-gradient(145deg, #303745 0%, var(--tv-casing) 42%, #1A1E26 100%);
+  background: linear-gradient(
+    145deg,
+    #303745 0%,
+    var(--tv-casing) 42%,
+    #1a1e26 100%
+  );
   box-shadow:
     0 28px 60px rgba(0, 0, 0, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -55,7 +60,7 @@ body {
   width: 70px;
   height: 12px;
   border-radius: 0 0 8px 8px;
-  background: #12161C;
+  background: #12161c;
 }
 
 /* ---------- Tubo ---------- */
@@ -69,7 +74,7 @@ body {
   border-radius: 24px / 18px;
   background: var(--tv-bezel);
   box-shadow:
-    inset 0 0 0 2px #080B10,
+    inset 0 0 0 2px #080b10,
     inset 0 0 22px rgba(0, 0, 0, 0.9),
     0 0 0 1px rgba(180, 83, 9, 0.35);
 }
@@ -79,7 +84,7 @@ body {
   height: 100%;
   overflow: hidden;
   border-radius: 18px / 13px;
-  background: radial-gradient(circle at 50% 42%, #17254F 0%, var(--crt-bg) 72%);
+  background: radial-gradient(circle at 50% 42%, #17254f 0%, var(--crt-bg) 72%);
   box-shadow:
     inset 0 0 70px rgba(0, 0, 0, 0.85),
     inset 0 0 20px rgba(0, 240, 255, 0.12);
@@ -94,7 +99,10 @@ body {
   padding: clamp(1rem, 2.6vw, 2.4rem);
   scrollbar-width: thin;
   scrollbar-color: var(--phosphor-cyan) rgba(0, 0, 0, 0.35);
-  transition: filter 200ms ease, opacity 200ms ease, transform 300ms ease;
+  transition:
+    filter 200ms ease,
+    opacity 200ms ease,
+    transform 300ms ease;
 }
 
 .tv-screen__content::-webkit-scrollbar {
@@ -123,7 +131,11 @@ body {
   inset: 0;
   z-index: 5;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 52%, rgba(3, 5, 12, 0.7) 100%);
+  background: radial-gradient(
+    ellipse at center,
+    transparent 52%,
+    rgba(3, 5, 12, 0.7) 100%
+  );
 }
 
 .tv-screen__reflection {
@@ -160,13 +172,15 @@ body {
   border: 1px solid currentColor;
   border-radius: 3px;
   background-color: rgba(11, 16, 33, 0.88);
-  font-family: 'Chakra Petch', monospace;
+  font-family: "Chakra Petch", monospace;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-shadow: 0 0 10px currentColor;
   box-shadow: 0 0 18px color-mix(in srgb, currentColor 30%, transparent);
-  animation: osd-in 180ms ease-out, osd-out 400ms ease 1600ms forwards;
+  animation:
+    osd-in 180ms ease-out,
+    osd-out 400ms ease 1600ms forwards;
 }
 
 .tv-osd__marker {
@@ -276,7 +290,7 @@ body {
 }
 
 .tv-screen--off .tv-screen__glass {
-  background: #05070C;
+  background: #05070c;
   box-shadow:
     inset 0 0 70px rgba(0, 0, 0, 0.95),
     inset 0 0 26px rgba(0, 240, 255, 0.04);
@@ -286,6 +300,10 @@ body {
 .tv-screen--off .tv-screen__scanlines,
 .tv-screen--off .tv-osd {
   opacity: 0;
+}
+
+.tv-screen--off .tv-screen__content {
+  pointer-events: none;
 }
 
 .tv-screen--start .tv-screen__glass {
@@ -314,14 +332,16 @@ body {
   flex-direction: column;
   gap: clamp(0.7rem, 1.4vw, 1.1rem);
   padding: clamp(0.75rem, 1.4vw, 1.1rem);
-  border: 1px solid #10141A;
+  border: 1px solid #10141a;
   border-radius: 14px;
-  background: linear-gradient(160deg, #2C3340, #1C212A 70%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(160deg, #2c3340, #1c212a 70%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .tv-controls__brand {
-  font-family: 'Chakra Petch', monospace;
+  font-family: "Chakra Petch", monospace;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -335,6 +355,24 @@ body {
   color: var(--crt-text-muted);
   font-size: 0.54rem;
   letter-spacing: 0.12em;
+}
+
+button.tv-controls__brand {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.tv-controls__brand:focus-visible {
+  outline: 2px solid var(--phosphor-amber);
+  outline-offset: 3px;
+}
+
+button.tv-controls__brand:hover {
+  filter: brightness(1.25);
 }
 
 .tv-controls__knobs {
@@ -355,10 +393,18 @@ body {
   position: relative;
   width: clamp(52px, 5.2vw, 70px);
   aspect-ratio: 1;
-  border: 2px solid #0D1117;
+  border: 2px solid #0d1117;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 28%, #4C5666, var(--knob-metal) 58%, #1D232D);
-  box-shadow: 0 4px 0 #12161C, 0 8px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  background: radial-gradient(
+    circle at 34% 28%,
+    #4c5666,
+    var(--knob-metal) 58%,
+    #1d232d
+  );
+  box-shadow:
+    0 4px 0 #12161c,
+    0 8px 14px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
   cursor: grab;
   touch-action: none;
 }
@@ -376,7 +422,11 @@ body {
   position: absolute;
   inset: 8px;
   border-radius: 50%;
-  background: repeating-conic-gradient(from 0deg, #3D4655 0deg 10deg, #2C3542 10deg 20deg);
+  background: repeating-conic-gradient(
+    from 0deg,
+    #3d4655 0deg 10deg,
+    #2c3542 10deg 20deg
+  );
   transform: rotate(var(--knob-rotation));
   transition: transform 150ms ease-out;
 }
@@ -402,7 +452,7 @@ body {
 
 .tv-knob__label,
 .tv-knob__display {
-  font-family: 'Chakra Petch', monospace;
+  font-family: "Chakra Petch", monospace;
   text-align: center;
 }
 
@@ -441,23 +491,51 @@ body {
 .tv-nav-btn {
   min-height: 42px;
   align-items: center;
+  text-decoration: none;
+}
+
+/* Botón de sección sintonizado: borde cian y LED encendido. */
+.tv-nav-btn.is-active {
+  border-color: var(--phosphor-cyan);
+  color: var(--phosphor-cyan);
+  background: linear-gradient(#2a4450, #1b313b);
+  box-shadow:
+    0 3px 0 #141920,
+    inset 0 0 0 1px color-mix(in srgb, var(--phosphor-cyan) 45%, transparent),
+    0 0 14px rgba(0, 240, 255, 0.35);
+  text-shadow: 0 0 9px rgba(0, 240, 255, 0.6);
+}
+
+.tv-nav-btn.is-active::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--phosphor-cyan);
+  box-shadow: 0 0 8px var(--phosphor-cyan);
 }
 
 .tv-physical-btn,
 .tv-step-btn {
   width: 100%;
   padding: 0.6rem 0.45rem;
-  border: 1px solid #0F1319;
+  border: 1px solid #0f1319;
   border-radius: 4px;
-  background: linear-gradient(#3C4553, var(--knob-metal));
+  background: linear-gradient(#3c4553, var(--knob-metal));
   color: var(--crt-text);
-  font-family: 'Chakra Petch', monospace;
+  font-family: "Chakra Petch", monospace;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   cursor: pointer;
-  box-shadow: 0 3px 0 #141920, inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+  box-shadow:
+    0 3px 0 #141920,
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    filter 120ms ease;
 }
 
 .tv-physical-btn {
@@ -479,7 +557,9 @@ body {
 .tv-physical-btn:active,
 .tv-step-btn:active {
   transform: translateY(3px);
-  box-shadow: 0 0 0 #141920, inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 0 #141920,
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   filter: brightness(1.18);
 }
 
@@ -494,13 +574,15 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #7F1D1D;
-  box-shadow: 0 0 4px #7F1D1D;
+  background: #7f1d1d;
+  box-shadow: 0 0 4px #7f1d1d;
 }
 
 .tv-led--on {
   background: var(--phosphor-green);
-  box-shadow: 0 0 10px var(--phosphor-green), 0 0 18px rgba(5, 255, 161, 0.5);
+  box-shadow:
+    0 0 10px var(--phosphor-green),
+    0 0 18px rgba(5, 255, 161, 0.5);
 }
 
 .tv-speaker {
@@ -509,19 +591,19 @@ body {
   gap: 4px;
   padding: 0.6rem;
   border-radius: 6px;
-  background: #11161D;
+  background: #11161d;
 }
 
 .tv-speaker span {
   height: 4px;
   border-radius: 2px;
-  background: #3A4452;
+  background: #3a4452;
 }
 
 .tv-controls__hint {
   margin: 0;
   color: var(--crt-text-muted);
-  font-family: 'Chakra Petch', monospace;
+  font-family: "Chakra Petch", monospace;
   font-size: 0.58rem;
   text-align: center;
   letter-spacing: 0.06em;

@@ -1,30 +1,16 @@
-import RotaryKnob from "./RotaryKnob";
-import { CHANNELS } from "../../data/channels";
-import { NavLinks } from "../layout/Navbar";
+import { NavLink } from 'react-router-dom'
+import RotaryKnob from './RotaryKnob'
+import { CHANNELS, NAV_CHANNELS } from '../../data/channels'
 
-/* Panel físico: perillas, botones, LED y altavoz. */
+/* Panel físico: perillas, botones, LED y altavoz.
+   La NAV usa NavLink: la ruta activa enciende el indicador del botón. */
 
-const channelRotation = (value) => -135 + value * 90;
-const volumeRotation = (value) => -135 + (value / 100) * 270;
+const channelRotation = (value) => -135 + (value / (CHANNELS.length - 1)) * 270
+const volumeRotation = (value) => -135 + (value / 100) * 270
 
-/* Derivamos las secciones del panel de TV de las rutas del Navbar. */
-const NAV_SECTIONS = NavLinks().map((link) => ({
-  key: link.href.startsWith("#") ? link.href.slice(1) : link.href,
-  label: link.label,
-  href: link.href,
-}));
-
-const navigateToSection = (href) => {
-  const id = href.startsWith("#") ? href.slice(1) : null;
-  if (id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  } else if (href.startsWith("/")) {
-    window.location.assign(href);
-  }
-};
 export default function ControlPanel({
   channel,
+  channelLabel,
   volume,
   power,
   onChannelChange,
@@ -32,28 +18,44 @@ export default function ControlPanel({
   onPower,
   onInteract,
 }) {
+  const handleNavClick = (event) => {
+    onInteract?.()
+    if (!power) event.preventDefault()
+  }
+
+  const step = (delta) => {
+    onInteract?.()
+    onChannelChange(channel + delta)
+  }
+
   return (
-    <aside
-      className="tv-controls"
-      aria-label="Panel de controles del televisor"
-    >
-      <div className="tv-controls__brand">
+    <aside className="tv-controls" aria-label="Panel de controles del televisor">
+      <button
+        type="button"
+        className="tv-controls__brand"
+        onClick={() => {
+          onInteract?.()
+          onChannelChange(0)
+        }}
+        aria-label="KINETRA — volver a CH 01 Inicio"
+      >
         KINETRA
         <span>TRINITRON 2000</span>
-      </div>
+      </button>
 
       <div className="tv-controls__knobs">
         <RotaryKnob
           label="CH SELECTOR"
-          display={CHANNELS[channel].code}
+          display={channelLabel}
           value={channel}
           min={0}
-          max={3}
+          max={CHANNELS.length - 1}
           step={1}
           rotationFor={channelRotation}
           onChange={onChannelChange}
           onTap={() => onChannelChange(channel + 1)}
           onInteract={onInteract}
+          disabled={!power}
         />
         <RotaryKnob
           label="VOL / AUDIO"
@@ -72,29 +74,27 @@ export default function ControlPanel({
       <div className="tv-controls__buttons">
         <button
           type="button"
-          className={`tv-physical-btn tv-physical-btn--power ${power ? "is-on" : ""}`}
+          className={`tv-physical-btn tv-physical-btn--power ${power ? 'is-on' : ''}`}
           onClick={onPower}
           aria-pressed={power}
         >
-          <span
-            className={`tv-led ${power ? "tv-led--on" : ""}`}
-            aria-hidden="true"
-          />
+          <span className={`tv-led ${power ? 'tv-led--on' : ''}`} aria-hidden="true" />
           POWER
         </button>
       </div>
 
       <div className="tv-controls__nav" aria-label="Navegación por secciones">
-        {NAV_SECTIONS.map((section) => (
-          <button
-            key={section.key}
-            type="button"
-            className="tv-nav-btn tv-physical-btn"
-            onClick={() => navigateToSection(section.href)}
-            aria-label={`Navegar a ${section.label}`}
+        {NAV_CHANNELS.map((section) => (
+          <NavLink
+            key={section.id}
+            to={section.path}
+            onClick={handleNavClick}
+            className={({ isActive }) =>
+              `tv-nav-btn tv-physical-btn${isActive ? ' is-active' : ''}`
+            }
           >
-            {section.label}
-          </button>
+            {section.navLabel}
+          </NavLink>
         ))}
       </div>
 
@@ -102,7 +102,7 @@ export default function ControlPanel({
         <button
           type="button"
           className="tv-step-btn"
-          onClick={() => onChannelChange(channel - 1)}
+          onClick={() => step(-1)}
           aria-label="Canal anterior"
         >
           CH ▲
@@ -110,7 +110,7 @@ export default function ControlPanel({
         <button
           type="button"
           className="tv-step-btn"
-          onClick={() => onChannelChange(channel + 1)}
+          onClick={() => step(1)}
           aria-label="Canal siguiente"
         >
           CH ▼
@@ -122,7 +122,7 @@ export default function ControlPanel({
           <span key={index} />
         ))}
       </div>
-      <p className="tv-controls__hint">↑ ↓ o teclas 1-4</p>
+      <p className="tv-controls__hint">↑ ↓ o teclas 1-8</p>
     </aside>
-  );
+  )
 }

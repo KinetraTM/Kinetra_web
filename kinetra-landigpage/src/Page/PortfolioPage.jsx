@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PortfolioNav from '../components/layout/PortfolioNav'
 import Container from '../components/ui/Container'
 import Heading from '../components/ui/Heading'
@@ -23,7 +24,7 @@ export default function PortfolioPage() {
 
           <div className="portfolio-grid" aria-label="Propuestas de webs">
             {websites.map((site) => (
-              <a key={site.slug} className="portfolio-card" href={`/webs/${site.slug}`}>
+              <Link key={site.slug} className="portfolio-card" to={`/webs/${site.slug}`}>
                 <span className="portfolio-card__meta">
                   <span>{site.kind}</span>
                   <span>→ ./abrir</span>
@@ -31,7 +32,7 @@ export default function PortfolioPage() {
                 <SiteMockup site={site} mini />
                 <h2 className="portfolio-card__title">{site.name}</h2>
                 <p className="portfolio-card__summary">{site.summary}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </Container>

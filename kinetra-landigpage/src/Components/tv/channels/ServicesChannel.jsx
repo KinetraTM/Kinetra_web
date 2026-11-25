@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 import { services } from '../../../data/channels'
 
 /* CH 02 — SERVICIOS */
 
-export default function ServicesChannel({ onGoChannel }) {
+export default function ServicesChannel() {
   return (
     <section className="tv-channel tv-channel--services">
       <p className="tv-eyebrow">[ CH 02 · SERVICIOS ]</p>
@@ -25,9 +26,9 @@ export default function ServicesChannel({ onGoChannel }) {
         ))}
       </ul>
 
-      <button type="button" className="tv-btn tv-btn--primary" onClick={() => onGoChannel(3)}>
+      <Link to="/contacto" className="tv-btn tv-btn--primary">
         Solicitar cotización
-      </button>
+      </Link>
     </section>
   )
 }

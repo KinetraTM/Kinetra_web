@@ -2,6 +2,26 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Recupera la subruta original tras el fallback 404 de GitHub Pages.
+      // 404.html redirige a /<base>/?/<ruta>; el router debe ver /<base>/<ruta>.
+      (function () {
+        var location = window.location
+        if (location.search[1] !== '/') return
+        var decoded = location.search
+          .slice(1)
+          .split('&')
+          .map(function (part) {
+            return part.replace(/~and~/g, '&')
+          })
+          .join('?')
+        window.history.replaceState(
+          null,
+          null,
+          location.pathname.replace(/\/$/, '') + decoded + location.hash,
+        )
+      })()
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

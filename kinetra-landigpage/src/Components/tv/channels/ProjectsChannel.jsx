@@ -1,15 +1,16 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { projects } from '../../../data/channels'
 
-/* CH 03 — PROYECTOS (vitrina estilo emisión en vivo) */
+/* CH 05 — PROYECTOS (vitrina estilo emisión en vivo) */
 
-export default function ProjectsChannel({ onGoChannel }) {
+export default function ProjectsChannel() {
   const [selectedId, setSelectedId] = useState(projects[0].id)
   const selected = projects.find((project) => project.id === selectedId) ?? projects[0]
 
   return (
     <section className="tv-channel tv-channel--projects">
-      <p className="tv-eyebrow">[ CH 03 · PROYECTOS ]</p>
+      <p className="tv-eyebrow">[ CH 05 · PROYECTOS ]</p>
       <h2 className="tv-headline tv-headline--sm">Trabajos realizados</h2>
 
       <div className="tv-projects">
@@ -49,9 +50,9 @@ export default function ProjectsChannel({ onGoChannel }) {
         </div>
       </div>
 
-      <button type="button" className="tv-btn tv-btn--primary" onClick={() => onGoChannel(3)}>
+      <Link to="/contacto" className="tv-btn tv-btn--primary">
         Encargar uno similar
-      </button>
+      </Link>
     </section>
   )
 }

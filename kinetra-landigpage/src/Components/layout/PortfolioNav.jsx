@@ -1,25 +1,27 @@
+import { Link } from 'react-router-dom'
+
 /* Barra de ruta para las páginas del portafolio de posibles webs. */
 
 const PortfolioNav = ({ current = 'webs' }) => (
   <nav className="portfolio-nav" aria-label="Navegación del portafolio">
     <div className="container portfolio-nav__inner">
-      <a className="portfolio-nav__brand" href="/">
+      <Link className="portfolio-nav__brand" to="/">
         user@web:~$ <strong>Kinetra</strong>
-      </a>
+      </Link>
       <ul>
         <li>
-          <a href="/">./inicio</a>
+          <Link to="/">./inicio</Link>
         </li>
         <li>
-          <a href="/webs" aria-current={current === 'webs' ? 'page' : undefined}>
+          <Link to="/webs" aria-current={current === 'webs' ? 'page' : undefined}>
             /webs
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/terminos">/terminos</a>
+          <Link to="/terminos">/terminos</Link>
         </li>
         <li>
-          <a href="/privacidad">/privacidad</a>
+          <Link to="/privacidad">/privacidad</Link>
         </li>
       </ul>
     </div>
