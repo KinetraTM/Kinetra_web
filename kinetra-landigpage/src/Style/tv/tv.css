@@ -302,6 +302,10 @@ body {
   opacity: 0;
 }
 
+.tv-screen--off .tv-screen__content {
+  pointer-events: none;
+}
+
 .tv-screen--start .tv-screen__glass {
   animation: crt-start 520ms ease-out;
 }
@@ -351,6 +355,24 @@ body {
   color: var(--crt-text-muted);
   font-size: 0.54rem;
   letter-spacing: 0.12em;
+}
+
+button.tv-controls__brand {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.tv-controls__brand:focus-visible {
+  outline: 2px solid var(--phosphor-amber);
+  outline-offset: 3px;
+}
+
+button.tv-controls__brand:hover {
+  filter: brightness(1.25);
 }
 
 .tv-controls__knobs {
@@ -456,6 +478,42 @@ body {
 
 .tv-controls__stepper {
   flex-direction: row;
+}
+
+/* ---------- Nav de secciones (Botoncilla TV) ---------- */
+.tv-controls__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: -0.5rem;
+}
+
+.tv-nav-btn {
+  min-height: 42px;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Botón de sección sintonizado: borde cian y LED encendido. */
+.tv-nav-btn.is-active {
+  border-color: var(--phosphor-cyan);
+  color: var(--phosphor-cyan);
+  background: linear-gradient(#2a4450, #1b313b);
+  box-shadow:
+    0 3px 0 #141920,
+    inset 0 0 0 1px color-mix(in srgb, var(--phosphor-cyan) 45%, transparent),
+    0 0 14px rgba(0, 240, 255, 0.35);
+  text-shadow: 0 0 9px rgba(0, 240, 255, 0.6);
+}
+
+.tv-nav-btn.is-active::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--phosphor-cyan);
+  box-shadow: 0 0 8px var(--phosphor-cyan);
 }
 
 .tv-physical-btn,

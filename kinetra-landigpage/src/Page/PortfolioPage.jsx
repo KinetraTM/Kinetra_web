@@ -1,7 +1,8 @@
-import PortfolioNav from '../Components/layout/PortfolioNav'
-import Container from '../Components/ui/Container'
-import Heading from '../Components/ui/Heading'
-import SiteMockup from '../Components/ui/SiteMockup'
+import { Link } from 'react-router-dom'
+import PortfolioNav from '../components/layout/PortfolioNav'
+import Container from '../components/ui/Container'
+import Heading from '../components/ui/Heading'
+import SiteMockup from '../components/ui/SiteMockup'
 import { websites } from '../data/portfolio'
 import { withBase } from '../utils/basePath'
 import '../Style/layout/portfolio.css'
@@ -24,7 +25,7 @@ export default function PortfolioPage() {
 
           <div className="portfolio-grid" aria-label="Propuestas de webs">
             {websites.map((site) => (
-              <a key={site.slug} className="portfolio-card" href={withBase(`/webs/${site.slug}`)}>
+              <Link key={site.slug} className="portfolio-card" to={`/webs/${site.slug}`}>
                 <span className="portfolio-card__meta">
                   <span>{site.kind}</span>
                   <span>→ ./abrir</span>
@@ -32,7 +33,7 @@ export default function PortfolioPage() {
                 <SiteMockup site={site} mini />
                 <h2 className="portfolio-card__title">{site.name}</h2>
                 <p className="portfolio-card__summary">{site.summary}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </Container>

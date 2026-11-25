@@ -1,3 +1,22 @@
+# Kinetra Trinitron 2000
+
+## Enrutamiento
+
+La TV usa `react-router-dom` con `BrowserRouter basename={import.meta.env.BASE_URL}`.
+El chasis, el panel lateral, el estado de `POWER` y `VOL` viven en `TVLayout`; solo cambia el contenido del tubo (`<Outlet />`).
+
+Canales: `/` (CH 01), `/servicios`, `/webs`, `/proceso`, `/proyectos`, `/testimonios`, `/faq`, `/contacto` (CH 08). Cualquier otra ruta muestra `CH 404 · SIN SEÑAL`.
+
+Para desplegar en GitHub Pages bajo una subcarpeta:
+
+```bash
+VITE_BASE_URL=/<repo>/ pnpm run build
+```
+
+`public/404.html` redirige las recargas de subrutas al `index.html`, que restaura la ruta original antes de montar el router.
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.

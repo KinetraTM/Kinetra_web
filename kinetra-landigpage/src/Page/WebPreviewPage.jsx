@@ -1,14 +1,16 @@
-import PortfolioNav from '../Components/layout/PortfolioNav'
-import Container from '../Components/ui/Container'
-import Heading from '../Components/ui/Heading'
-import SiteMockup from '../Components/ui/SiteMockup'
+import { Link, useParams } from 'react-router-dom'
+import PortfolioNav from '../components/layout/PortfolioNav'
+import Container from '../components/ui/Container'
+import Heading from '../components/ui/Heading'
+import SiteMockup from '../components/ui/SiteMockup'
 import { getWebsite, websites } from '../data/portfolio'
 import { withBase } from '../utils/basePath'
 import '../Style/layout/portfolio.css'
 
 /* Vista previa de una posible web, con datos y enlaces a las demás propuestas. */
 
-export default function WebPreviewPage({ slug }) {
+export default function WebPreviewPage() {
+  const { slug } = useParams()
   const site = getWebsite(slug)
 
   return (
@@ -18,9 +20,9 @@ export default function WebPreviewPage({ slug }) {
         <Container>
           {site ? (
             <>
-              <a className="preview-back" href={withBase('/webs')}>
+              <Link className="preview-back" to="/webs">
                 ← cd ../webs
-              </a>
+              </Link>
 
               <Heading level={1} className="text-display-lg preview-title">
                 {site.name}
@@ -57,9 +59,9 @@ export default function WebPreviewPage({ slug }) {
                 {websites
                   .filter((other) => other.slug !== site.slug)
                   .map((other) => (
-                    <a key={other.slug} href={withBase(`/webs/${other.slug}`)}>
+                    <Link key={other.slug} to={`/webs/${other.slug}`}>
                       ./{other.slug}
-                    </a>
+                    </Link>
                   ))}
               </nav>
             </>
@@ -69,9 +71,9 @@ export default function WebPreviewPage({ slug }) {
                 Sitio no encontrado
               </Heading>
               <p className="text-body">No existe una propuesta con esa ruta.</p>
-              <a className="preview-back" href={withBase('/webs')}>
+              <Link className="preview-back" to="/webs">
                 ← cd ../webs
-              </a>
+              </Link>
             </div>
           )}
         </Container>

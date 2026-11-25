@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { ConsentProvider } from './Context/ConsentContext'
 import './index.css'
@@ -8,17 +9,12 @@ import './Style/layout/portfolio.css'
 import './Style/tv/tv.css'
 import './Style/tv/channels.css'
 
-/* Recupera la ruta profunda que GitHub Pages redirigió a través de 404.html. */
-const redirectedPath = window.sessionStorage.getItem('gh-pages-redirect')
-if (redirectedPath) {
-  window.sessionStorage.removeItem('gh-pages-redirect')
-  window.history.replaceState(null, '', redirectedPath)
-}
-
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ConsentProvider>
-      <App />
-    </ConsentProvider>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ConsentProvider>
+        <App />
+      </ConsentProvider>
+    </BrowserRouter>
   </StrictMode>,
-);
+)

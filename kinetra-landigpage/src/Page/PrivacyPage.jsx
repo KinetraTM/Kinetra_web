@@ -1,5 +1,6 @@
-import Container from '../Components/ui/Container'
-import Heading from '../Components/ui/Heading'
+import { Link } from 'react-router-dom'
+import Container from '../components/ui/Container'
+import Heading from '../components/ui/Heading'
 import '../Style/index.css'
 
 /* Política de privacidad — Plantilla clara. Revisar con asesoría legal antes de publicar. */
@@ -15,6 +16,9 @@ export default function PrivacyPage() {
           vende datos personales de clientes. Puede contactarnos para ver, modificar o eliminar
           su información personal según corresponda a su jurisdicción.
         </p>
+        <Link to="/" className="tv-btn tv-btn--ghost">
+          Volver a CH 01
+        </Link>
       </Container>
     </main>
   )
