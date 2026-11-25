@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { withBase } from '../../utils/basePath'
 import Button from '../ui/Button'
 import Heading from '../ui/Heading'
 import '../../Style/layout/components.css'
@@ -8,7 +9,7 @@ import '../../Style/layout/components.css'
 
 export const NavLinks = () => [
   { label: 'Servicios', href: '#servicios' },
-  { label: 'Webs', href: '/webs' },
+  { label: 'Webs', href: withBase('/webs') },
   { label: 'Proceso', href: '#proceso' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Testimonios', href: '#testimonios' },

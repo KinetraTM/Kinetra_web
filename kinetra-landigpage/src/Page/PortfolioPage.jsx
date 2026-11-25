@@ -4,6 +4,7 @@ import Container from '../components/ui/Container'
 import Heading from '../components/ui/Heading'
 import SiteMockup from '../components/ui/SiteMockup'
 import { websites } from '../data/portfolio'
+import { withBase } from '../utils/basePath'
 import '../Style/layout/portfolio.css'
 
 /* Índice de posibles webs: cada tarjeta abre una vista previa navegable. */

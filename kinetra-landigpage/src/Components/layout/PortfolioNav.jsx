@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 /* Barra de ruta para las páginas del portafolio de posibles webs. */
+import { withBase } from '../../utils/basePath'
 
 const PortfolioNav = ({ current = 'webs' }) => (
   <nav className="portfolio-nav" aria-label="Navegación del portafolio">

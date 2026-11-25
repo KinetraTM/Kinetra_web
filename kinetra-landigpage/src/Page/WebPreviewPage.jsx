@@ -4,6 +4,7 @@ import Container from '../components/ui/Container'
 import Heading from '../components/ui/Heading'
 import SiteMockup from '../components/ui/SiteMockup'
 import { getWebsite, websites } from '../data/portfolio'
+import { withBase } from '../utils/basePath'
 import '../Style/layout/portfolio.css'
 
 /* Vista previa de una posible web, con datos y enlaces a las demás propuestas. */
