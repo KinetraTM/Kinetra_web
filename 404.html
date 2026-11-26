@@ -1,13 +1,42 @@
 <!doctype html>
+<!-- KINETRA_SPA_FALLBACK: GitHub Pages sirve este archivo cuando una subruta no existe en disco. -->
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kinetra — redirigiendo…</title>
+    <title>Kinetra · sintonizando…</title>
     <script>
-      sessionStorage.setItem('gh-pages-redirect', location.pathname + location.search + location.hash)
-      location.replace('/Kinetra_web/')
+      (function () {
+        var location = window.location
+        var segments = location.pathname.split('/').filter(Boolean)
+
+        function redirect(base) {
+          var rest = location.pathname.slice(base.length).replace(/^\//, '').replace(/&/g, '~and~')
+          var search = location.search.replace(/^\?/, '').replace(/&/g, '~and~')
+          var target = base + '?/' + rest + (search ? '&' + search : '') + location.hash
+          location.replace(target)
+        }
+
+        if (segments.length === 0) {
+          redirect('/')
+          return
+        }
+
+        // En GitHub Pages por proyecto la base es /<repo>/; en dominio propio es /.
+        var candidate = '/' + segments[0] + '/'
+        var probe = new XMLHttpRequest()
+        probe.open('HEAD', candidate + '404.html', true)
+        probe.onload = function () {
+          redirect(probe.status === 200 ? candidate : '/')
+        }
+        probe.onerror = function () {
+          redirect('/')
+        }
+        probe.send()
+      })()
     </script>
   </head>
-  <body>Redirigiendo…</body>
+  <body>
+    <p>Sintonizando Kinetra…</p>
+  </body>
 </html>
