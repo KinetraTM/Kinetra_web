@@ -42,9 +42,10 @@ const pagesFallback = () => {
 }
 
 // https://vite.dev/config/
-// En GitHub Pages por proyecto define VITE_BASE_URL=/<repo>/ antes de buildear.
-// Vite expone ese valor como import.meta.env.BASE_URL (basename del router).
-export default defineConfig({
-  base: process.env.VITE_BASE_URL || '/',
+// En GitHub Pages por proyecto la base es /<repo>/; en desarrollo local es /.
+// VITE_BASE_URL permite sobrescribir (útil para dominios personalizados).
+// Vite expone este valor como import.meta.env.BASE_URL (basename del router).
+export default defineConfig(({ mode }) => ({
+  base: process.env.VITE_BASE_URL || (mode === 'production' ? '/Kinetra_web/' : '/'),
   plugins: [react()],
-})
+}))
